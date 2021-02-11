@@ -1,0 +1,206 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-grids</title>
+    <link rel="stylesheet" href="./article.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+
+<body>
+    <div class="header">
+        <h3>SimplyCode</h3>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <a href="./index.html">Home</a>
+            <a href="./index-html.html">HTML</a>
+            <a href="./index-css.html">CSS</a>
+            <a href="./index-js.html">JavaScript</a>
+            <a href="./index-cpp.html" style="background-color: #165081;">C++</a>
+        </div>
+
+        <div class="main">
+            <h2 style="font-weight: bolder;">Linked list</h2>
+            <br>
+            <h5>Pre requisites:</h5>
+            <ul>
+                <li><p>Structures</p></li>
+                <li><p>Classes</p></li>
+                <li><p>Constructors</p></li>
+                <li><p>Pointers</p></li>
+            </ul>
+
+            <br>
+
+            <p>There are different ways to implement, by using Structures and classes or just classes. Using a head pointer and tail pointer both or using head pointer only. Here we are gonna use Structures and classes both and only head pointer.</p>
+            <p>We will see how to make a Linked list and insert elements at rear, front and at a specific position and delete from front, rear and at a specific position and printing the size of the linked</p>
+            <br><br>
+            <p>An element is called a node in linked list, here we create a node using structure.</p>
+            <pre class="code">
+                struct node
+                {
+                    int data;
+                    node *next;
+                };
+            </pre>
+            <br>
+            <p>We define all the functions related to our linked list in a class. The code is pretty self explanatory with the comments.</p>
+<pre class="code">
+    class ll
+    {
+    
+    private:
+        node *head;
+        int nodes_present;
+    
+    public:
+        ll()
+        {
+            head=NULL;
+            nodes_present=0;
+        }
+        int size_of_ll()
+        {
+            return nodes_present;
+        }
+    
+        void insert_rear(int n)
+        {
+            node *temp=new node;  //by new node we are making a new node whose address is going into the temp variable
+            temp->data=n;
+            temp->next=NULL;
+    
+            if(head==NULL)
+                head=temp;
+    
+            else
+            {
+                node *ptr=head;
+    
+                while(ptr->next!=NULL)  //goes till the last node
+                    ptr=ptr->next;
+                ptr->next=temp;        //on next of last node, appends temp
+            }
+            nodes_present++;
+        }
+    
+        void insert_front(int n)
+        {
+            node *temp=new node;
+            temp->data=n;
+            temp->next=NULL;
+    
+            if(head==NULL)
+                head=temp;
+            else
+            {
+                temp->next=head;
+                head=temp;
+            }
+            nodes_present++;
+        }
+    
+        void insert_at_pos(int n, int pos)
+        {
+    
+            if(pos==0)
+                insert_front(n);
+            if(pos==(nodes_present))
+                insert_rear(n);
+            else
+            {
+                if(pos<1 || pos>nodes_present)
+                    cout&lt;&lt;"invalid position\n";
+                else
+                {
+                    node *temp=new node;
+                    temp->data=n;
+    
+                    node *ptr=head;
+                    while(pos--)
+                    {
+                        if(pos==0)
+                        {
+                            temp->next=ptr->next;
+                            ptr->next=temp;
+                        }
+                    }
+                }
+            }
+        }
+    
+    
+        void del_rear()
+        {
+            if(head==NULL)
+                cout&lt;&lt;"Linkedlist is empty\n";
+            else
+            {
+                node *ptr=head;
+                while(ptr->next->next !=NULL) //ptr goes till second last node
+                    ptr=ptr->next;
+                delete ptr->next;
+                ptr->next=NULL;
+                nodes_present--;
+            }
+    
+        }
+    
+        void del_front()
+        {
+            if(head==NULL)
+                cout&lt;&lt;"Linkedlist is empty\n";
+            else
+            {
+                head=head->next;
+                nodes_present--;
+            }
+        }
+    
+        void del_at_pos(int pos)
+        {
+            if(pos==0)
+                del_front();
+            else if(pos==(nodes_present-1))
+                del_rear();
+            else
+            {
+                node *ptr=head;
+                while(pos--)
+                {
+                    if(pos==0)
+                    {
+                        ptr->next=ptr->next->next;
+                    }
+                }
+            }
+        }
+    
+        void display()
+        {
+            if(head==NULL)
+                cout&lt;&lt;"Linkedlist is empty \n";
+    
+            else
+            {
+                node *ptr=head;
+    
+                while(ptr!=NULL)  //loop breaks after the last node
+                {
+                    cout&lt;&lt;ptr->data&lt;&lt;" ";
+                    ptr=ptr->next;
+                }
+                cout&lt;&lt;"\n";
+            }
+        }
+    };
+</pre>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
