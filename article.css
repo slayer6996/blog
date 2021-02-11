@@ -60,3 +60,13 @@
     padding: 10px;
     margin: auto;
 }
+
+@media screen and (max-width: 500px)
+{
+    .wrapper{
+        display: block;
+    }
+    .sidebar{
+        display: inline;
+    }
+}

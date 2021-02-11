@@ -56,4 +56,15 @@
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-around;
+    padding: 5px;
+}
+
+@media screen and (max-width: 500px)
+{
+    .wrapper{
+        display: block;
+    }
+    .sidebar{
+        display: inline;
+    }
 }
