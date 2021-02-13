@@ -1,0 +1,119 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+    <link rel="stylesheet" href="./article.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+
+<body>
+    <div class="header">
+        <h3>SimplyCode</h3>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <a href="./index.html">Home</a>
+            <a href="./index-html.html">HTML</a>
+            <a href="./index-css.html">CSS</a>
+            <a href="./index-js.html">JavaScript</a>
+            <a href="./index-cpp.html" style="background-color: #165081;">C++</a>
+        </div>
+
+        <div class="main">
+            <h2 style="font-weight: bolder;">Arrays</h2>
+            <br>
+            <p>An array is a collection of variables of the same data type referenced by a common name. Arrays become useful is situations where many elements of the same data type need to be stored or processed. 
+                All arrays consist of contiguous memory locations. Arrays can have data items of fundamental data types like int or float, or even of user-defined data types like structures. <br>
+                Arrays can be of one-dimensional or multi-dimensional. A one-dimensional array is the simplest form of arrays and here we only consider those. <br>
+                Let’s see how arrays are declared. <br>
+                Suppose we want to declare an array , having 5 elements all of which are of integer type, we do this by: <br>
+            </p>
+
+                 <div class="code">
+<pre>
+    int main() 
+    { 
+        int a[5]={100,200,300,400,500}; 
+        return 0; 
+    }
+</pre>
+                 </div>
+                 <p>The above code creates an array like this: </p>
+                 <img src="./cpparrays.html" alt="">
+                 <br>
+                 <p>If we write a code like this: </p>
+                 <div class="code">
+<pre>
+    int main() 
+    { 
+        int a[]={100,200,300,400,500};    //size not specified 
+        return 0; 
+    }
+</pre>
+                 </div>
+                 <p>without specifying the size, array a is created to accommodate the given elements.</p>
+                 <br>
+                 <p>We can create an array using user-inputs as: </p>
+                 <div class="code">
+<pre>
+    int main() 
+    {  
+        int size;  
+        cin>>size;     // entering the size of the array  
+        int a[size];              // array declaration  
+        for(int i=0;i<size;++i)   
+        cin>>a[i];     //entering the elements in the array  
+        return 0; 
+    }
+</pre>
+                 </div>
+                 <h4>Accessing an element</h4>
+                 <br>
+                 <p>
+                    An element in an array can be accessed by indexing the array.  
+                    Arrays are indexed from 0 to (n-1) where n is the size of the array. This means that the first element in the array is indexed 0 and so on, and the last element is indexed (n-1). In general, for the ith element, the index is (i-1). 
+                    For example, 
+                 </p>
+                 <div class="code">
+<pre>
+    int main() 
+    {  
+        int a[5]={100,200,300,400,500};  
+        cout&lt;&lt;a[3];     //to print the 4th element  
+        return 0; 
+    }
+</pre>
+                 </div>
+                 <p>The above code prints:</p>
+                 <div class="code">
+                     <pre>400</pre>
+                 </div>
+                 <br>
+                 <p>Another way of accessing the array elements is by using the fact that the name of an array always points to the address of the first element. The following code illustrates this: </p>
+                 <div class="code">
+<pre>
+    int main() 
+    {  
+        int arr[]={ 9,45,67,89,34,23};  
+        int n=sizeof(arr)/sizeof(arr[0]);  
+        for(int i=0;i&lt;n;++i)   
+        cout&lt;&lt;*(arr+i)&lt;&lt;” “;  
+        return 0; 
+    }
+</pre>
+                 </div>
+                 <p>It produces the output:</p>
+                 <div class="code">
+                     <pre>
+                        9 45 67 89 34 23 
+                     </pre>
+                 </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
