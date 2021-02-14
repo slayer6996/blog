@@ -69,4 +69,13 @@
     .sidebar{
         display: inline;
     }
+    img{
+        width: 100%;
+        height: auto;
+    }
+}
+
+img{
+    width: 100%;
+    height: auto;
 }
