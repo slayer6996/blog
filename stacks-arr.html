@@ -1,0 +1,124 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack</title>
+    <link rel="stylesheet" href="./article.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+
+<body>
+    <div class="header">
+        <h3>SimplyCode</h3>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <a href="./index.html">Home</a>
+            <a href="./index-html.html">HTML</a>
+            <a href="./index-css.html">CSS</a>
+            <a href="./index-js.html">JavaScript</a>
+            <a href="./index-cpp.html" style="background-color: #165081;">C++</a>
+        </div>
+
+        <div class="main">
+            <h2>Stacks</h2>
+            <br>
+            <h4>Pre Requisites:</h4>
+            <ul>
+                <li>Arrays</li>
+                <li>Linked list</li>
+            </ul>
+            <br>
+            <p>Stack is a Datastructure which can store elements of similar data types. It is a LIFO(last in first out) Datastructure, it means
+                that the last element pushed into a stack is the first one to come out.
+            </p>
+            <p>
+                We will have a look at how a stack is designed and implemented in C++. <br>
+                The commonly implemented functions of a stack are- push, pop, isempty and display.
+            </p>
+            <p>
+                We insert an element into a stack using push function. Remember that the element can be added only to the top of the stack.
+                The deletion of an element is possible only from the top of the stack, this is done by pop function.
+                The isempty function has return type bool which returns true if the stack is empty.
+            </p>
+            <br>
+            <p>The code for implementing stack using Arrays is given below, the code is pretty much self explanatory.</p>
+            
+            <div class="code">
+<pre>
+    //implementing stacks with arrays
+class stackk
+{
+private:
+    int top;
+    int size;
+public:
+    int a[1000];     //max size for stack=1000
+
+    stackk()
+    {
+        top=-1;     //initially stack has no element
+    }
+
+    void push(int n)
+    {
+        if(top>=(1000-1))
+            cout&lt;&lt;"stack overflow\n";
+        else
+        {
+            a[++top]=n;     //increament top and push n
+        }
+    }
+
+    void pop()
+    {
+        if(top&lt;0)
+            cout&lt;&lt;"stack underflow\n";
+        else
+        {
+            cout&lt;&lt;a[top--]&lt;&lt;" popped\n";        //first print a[top] and then decrement
+        }
+    }
+
+    bool isempty()
+    {
+        if(top&lt;0)
+            return true;
+        else
+            return false;
+    }
+
+    void display()
+    {
+        if(top&lt;0)
+            cout&lt;&lt;"stack is empty\n";
+        else
+        {
+            for(int i=top;i>=0;i--)
+            {
+                cout&lt;&lt;a[i]&lt;&lt;"\n";
+            }
+        }
+    }
+};
+
+</pre>
+            </div>
+            <br>
+            <p>Next page: Stack implementation with linked list.</p>
+            <nav aria-label="...">
+                <ul class="pagination pagination-lg">
+                  <li class="page-item active" aria-current="page">
+                    <span class="page-link">1</span>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="./stacks-ll.html">2</a></li>
+                </ul>
+              </nav>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>

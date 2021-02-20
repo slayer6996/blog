@@ -1,0 +1,124 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack</title>
+    <link rel="stylesheet" href="./article.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+
+<body>
+    <div class="header">
+        <h3>SimplyCode</h3>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <a href="./index.html">Home</a>
+            <a href="./index-html.html">HTML</a>
+            <a href="./index-css.html">CSS</a>
+            <a href="./index-js.html">JavaScript</a>
+            <a href="./index-cpp.html" style="background-color: #165081;">C++</a>
+        </div>
+
+        
+        <div class="main">
+            <h2>Stack implementation using linked list</h2>
+            <br>
+            <p>Stack can be implemented using a linked list. Earlier we say how we can implement stack using arrays but there is a limitation
+                while implementing stack with arrays, the size of the stack is fixed. To overcome this problem, we use linked list.
+            </p>
+            <br>
+            <p>The idea behind the implementation is same as we discussed earlier. <br>
+                The code for implementing stack with linked list in C++ is given below, the code is pretty much self explanatory.
+            </p>
+            
+            <div class="code">
+<pre>
+    //implementing stacks using linked list
+
+    class Stack
+    {
+    private:
+        int data;
+        Stack *next;        //pointing to the nextt element
+        Stack *top;         //points to the top element
+    public:
+        Stack()
+        {
+            top=NULL;       //initialising top with NULL
+        }
+    
+        //the idea is to put the new element at the beginning of linked list
+    
+        void push(int n)
+        {
+            Stack *temp= new Stack;
+            temp->data=n;
+            temp->next=NULL;
+            if(top==NULL)
+            {
+                top=temp;
+            }
+            else
+            {
+                temp->next=top;
+                top=temp;
+            }
+        }
+    
+        //to pop element, we delete the first node of linked list
+    
+        void pop()
+        {
+            if(top==NULL)
+                cout&lt;&lt;"stack undeflow\n";
+            else
+            {
+                top=top->next;
+            }
+        }
+    
+        void display()
+        {
+            if(top==NULL)
+                cout&lt;&lt;"stack is empty\n";
+            else
+            {
+                Stack *ptr=top;
+                while(ptr!=NULL)
+                {
+                    cout&lt;&lt;ptr->data&lt;&lt;" ";
+                    ptr=ptr->next;
+                }
+                cout&lt;&lt;"\n";
+            }
+        }
+    
+        bool isempty()
+        {
+            if(top==NULL)
+                return true;
+            else
+                return false;
+        }
+    };
+    
+</pre>
+            </div>
+            <br>
+            <nav aria-label="...">
+                <ul class="pagination pagination-lg">
+                  <li class="page-item"><a class="page-link" href="./stacks-arr.html">1</a></li>
+                  <li class="page-item active" aria-current="page">
+                    <span class="page-link">2</span>
+                  </li>
+                </ul>
+              </nav>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
