@@ -1,0 +1,92 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+    <link rel="stylesheet" href="./article.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+
+<body>
+    <div class="header">
+        <h3>SimplyCode</h3>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <a href="./index.html">Home</a>
+            <a href="./index-html.html">HTML</a>
+            <a href="./index-css.html">CSS</a>
+            <a href="./index-js.html">JavaScript</a>
+            <a href="./index-cpp.html" style="background-color: #165081;">C++</a>
+        </div>
+
+        <div class="main">
+            <h2 style="font-weight: bolder;">Reverse a linked list recursively</h2>
+            <br>
+            <p>A linked list can be reversed either iteratively or recursively. The recursive way of reversing a linked
+                list can be very tricky
+                to understand. We will have a look at how the recursion stack is formed and the operations we are
+                performing to reverse
+                the list to make sure we understand what each line of code does rather than memorizing it blindly.
+            </p>
+            <br>
+            <div class="code">
+                <pre>
+    node* rev(node* p)
+    {
+        if(p==NULL || p->next==NULL)
+        {
+            head=p;
+            return head;
+        }
+
+        rev(p->next);
+        node *q=p->next;
+        q->next=p;
+        p->next=NULL;
+
+        return head;
+    }   
+</pre>
+</div>
+                <p>This is the code we use to reverse the linked list recursively.</p> <br>
+                <p>There are a few things we should keep in mind:</p>
+                <ul>
+                    <li>It returns the original head of the linked list. Which means that no values are changed, only
+                        the links are reversed.</li>
+                    <li>The head of the linked list is passed to the function by pass by value method because we don't
+                        want to disturb the original head.</li>
+                </ul>
+                <br>
+                <p>The line rev(p->next); will keep calling the function again and again till we reach the last node of linked list,
+                    that's when p->next==NULL and the base condition is met.
+                </p>
+                <br>
+                <p>The list will look like this:</p>
+                <img src="./revll1.JPG" alt="" style="width: 12cm; height: auto;">
+                <p>The last node is p now.</p>
+                <p>And now we have to make head store the address of this node. Let's have a look at the stack.</p>
+                <img src="./revll2.JPG" alt="" style="height: 10cm; width: auto;">
+                <br>
+                <p>After the making head store address of p, we start to move up along the stack.</p>
+                <img src="./revll3.JPG" alt="" style="height: 10cm; width: auto;">
+                <p>we can see that we reached the second last node of list, now we access the last node from here and make it q.</p>
+                <img src="./revll4.JPG" alt="" style="width: 12cm; height: auto;">
+                <br>
+                <p>Now all we have left to do is reverse the link by making q->next point to p. And then making p point to null.</p>
+                <img src="./revll5.JPG" alt="" style="width: 12cm; height: auto;">
+                <br>
+                <img src="./revll6.JPG" alt="" style="width: 12cm; height: auto;">
+                <br>
+                <p>This process of moving p and q backwards and reversing the links continues till the whole stack is empty. 
+                    And we obtain the linked list in a reversed fashion.
+                </p>
+            
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
