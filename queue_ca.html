@@ -1,0 +1,151 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue</title>
+    <link rel="stylesheet" href="./article.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+
+<body>
+    <div class="header">
+        <h3>SimplyCode</h3>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <a href="./index.html">Home</a>
+            <a href="./index-html.html">HTML</a>
+            <a href="./index-css.html">CSS</a>
+            <a href="./index-js.html">JavaScript</a>
+            <a href="./index-cpp.html" style="background-color: #165081;">C++</a>
+        </div>
+
+        <div class="main">
+            <h2 style="font-weight: bolder;">Queue</h2>
+            <br>
+            <p>
+                A Queue is First in Last Out (FIFO) datastructure. It can be implemented using arrays or linkedlist. Here we will see how 
+                to implement it using circular arrays.
+            </p>
+            <br>
+            <p>A circular array can be thought of as a never ending array, basically which has its end and beginning connected.</p>
+            <br>
+            <p>A queue has following operations:</p>
+            <ul>
+                <li>enqueue</li>
+                <li>dequeue</li>
+                <li>get front</li>
+                <li>get rear</li>
+            </ul>
+            <p>All these operations are performed with O(1) time complexity.</p>
+            <br>
+            <p><span style="font-weight: bold;">Enqueue</span> inserts an element into the queue from rear.</p>
+            <p><span style="font-weight: bold;">Dequeue</span> deletes an element from the queue from front.</p>
+            <p><span style="font-weight: bold;">Get front</span> returns the element which is at the front of the queue.</p>
+            <p><span style="font-weight: bold;">Get rear</span> returns the element which is at the end of the queue.</p>
+            <br>
+            <p>To implement queue using circular array, while doing enqueue operation we modify the rear as (rear+1)%capacity and while doing 
+                dequeue operation we front one step ahead, for doing that, we use (front+1)%capacity . 
+            </p>
+            <br>
+            <p>The following code is C++ implementation of queue using circular array.</p>
+            <div class="code">
+<pre>
+    //implementing queue with circular array
+
+    struct Queue
+    {
+        int *ar;
+        int Rear,Front;
+        int size,capacity;
+    
+        Queue(int c)
+        {
+            capacity=c;
+            ar=new int[capacity];
+            Front=0;
+            Rear=-1;            //it has the value -1 when queue is empty 
+            size=0;
+        }
+    
+        bool isempty()
+        {
+            return (size==0);
+        }
+    
+        bool isfull()
+        {
+            return (size==capacity);
+        }
+    
+        void enqueue(int x)
+        {
+            if(isfull())
+                cout&lt;&lt;"overflow\n";
+            else
+            {
+                Rear=(Rear+1)%capacity;
+                ar[Rear]=x;
+                size++;
+            }
+        }
+    
+        void dequeue()
+        {
+            if(isempty())
+                cout&lt;&lt;"underflow\n";
+            else
+            {
+                Front=(Front+1)%capacity;
+                size--;
+            }
+        }
+
+        void get_front()
+        {
+            if(isempty())
+                cout&lt;&lt;"empty queue\n";
+            else
+            cout&lt;&lt;ar[front];
+        }
+
+        void get_rear()
+        {
+            if(isempty())
+                cout&lt;&lt;"empty queue\n";
+            else
+            cout&lt;&lt;ar[rear];
+        }
+    
+        void display()
+        {
+            if(isempty())
+                cout&lt;&lt;"empty\n";
+            else
+            {
+                if(Rear>=Front)
+                {
+                    for(int i=Front;i&lt;=Rear;i++)
+                        cout&lt;&lt;ar[i]&lt;&lt;" ";
+                    cout&lt;&lt;"\n";
+                }
+                else
+                {
+                    for(int i=Front;i&lt;size;i++)
+                        cout&lt;&lt;ar[i]&lt;&lt;" ";
+                    for(int i=0;i&lt;=Rear;i++)
+                        cout&lt;&lt;ar[i]&lt;&lt;" ";
+                    cout&lt;&lt;"\n";
+                }
+            }
+        }
+    };   
+</pre>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
