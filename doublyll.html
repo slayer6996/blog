@@ -1,0 +1,173 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doubly linked list</title>
+    <link rel="stylesheet" href="./article.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+
+<body>
+    <div class="header">
+        <h3>SimplyCode</h3>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <a href="./index.html">Home</a>
+            <a href="./index-html.html">HTML</a>
+            <a href="./index-css.html">CSS</a>
+            <a href="./index-js.html">JavaScript</a>
+            <a href="./index-cpp.html" style="background-color: #165081;">C++</a>
+        </div>
+
+        <div class="main">
+            <h2 style="font-weight: bolder;">Doubly linked list</h2>
+            <br>
+            <p>Make sure you are familiar with singly linked list in order to understand doubly linked list.</p>
+            <br>
+            <p>A doubly linked list similar to singly linked list has nodes as its elements, but the difference is that in doubly linked list
+                a node can access next as well as previous node. 
+            </p>
+            <p>A node has data, and two pointers next and prev, containig address of next and previous nodes respectively.</p>
+            <br>
+            <p>In a doubly linked list we have 4 main operations, insertion of node at head and tail and deletion of node from head and tail.</p>
+            <br>
+<pre>
+Insertion at head:
+	1.initialise a temp node.
+	2. make temp->next point to the node to which is head is pointing to
+	3. If head is not null, i.e if it is pointing to a node, that nodes'
+	prev should point to our new node.
+	4. head should now point to temp node.
+
+Insertion at tail:
+	1.check if head is NULL, if that's the case then call insert_at_head()
+	2.If head!=NULL, make a temp node. 
+	3.Make ptr node and traverse the linked list till the last node.
+	4.At the last node, make its next point to temp.
+	5. Make the temp nodes' prev point to last node. 
+
+Deletion at head:
+	1. if head==NULL, linked list is empty.
+	2. make a pointer temp to store value of head.
+	3. make head point to second node by head=head->next.
+	4. now the new node head is pointing should have its prev pointing to 
+	NULL.
+	5. delete the temp.
+
+Deletion at tail: 
+	1.if head==NULL, linked list is empty.
+	2.make pointer temp point to head.
+	3.traverse the linked list till the last node. Now temp is pointing 
+	to last node.
+	4. access previous node from temp and make its next point to NULL.
+	5. delete temp.  
+</pre>
+<br>
+        <p>Following is the implementation of doubly linked list in C++</p>
+        <div class="code">
+<pre>
+    struct node
+    { 
+        int data;
+        node *next;
+        node *prev;
+    
+        node(int val)
+        {
+            data=val;
+            next=NULL;
+            prev=NULL;
+        }
+    };
+    
+    class ll
+    {
+    private:
+        node *head;
+    public:
+        ll()
+        {
+            head=NULL;
+        }
+    
+        void insert_at_head(int val)
+        {
+            node *temp=new node(val);
+    
+            temp->next=head;
+            if(head!=NULL)
+                head->prev=temp;
+            head=temp;
+        }
+    
+        void insert_at_tail(int val)
+        {
+            if(head==NULL)
+                insert_at_head(val);
+            else
+            {
+                node *temp=new node(val);
+                node *ptr=head;
+                while(ptr->next!=NULL)
+                    ptr=ptr->next;
+                ptr->next=temp;
+                temp->prev=ptr;
+            }
+        }
+    
+        void delete_at_head()
+        {
+            if(head==NULL)
+                cout&lt;&lt;"empty\n";
+            else
+            {
+                node *temp=head;
+                head=head->next;
+                head->prev=NULL;
+    
+                delete temp;
+            }
+        }
+    
+        void delete_at_tail()
+        {
+            if(head==NULL)
+                cout&lt;&lt;"empty\n";
+            else
+            {
+                node *temp=head;
+                while(temp->next!=NULL)
+                    temp=temp->next;
+                temp->prev->next=NULL;
+    
+                delete temp;
+            }
+        }
+    
+        void display()
+        {
+            if(head==NULL)
+                cout&lt;&lt;"empty\n";
+            else
+            {
+                node *ptr=head;
+                while(ptr!=NULL)
+                {
+                    cout&lt;&lt;ptr->data&lt;&lt;" ";
+                    ptr=ptr->next;
+                }
+                cout&lt;&lt;"\n";
+            }
+        }
+    };
+</pre>
+        </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
