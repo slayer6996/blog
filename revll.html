@@ -22,7 +22,7 @@
         </div>
 
         <div class="main">
-            <h2 style="font-weight: bolder;">Reverse a linked list recursively</h2>
+            <h2 style="font-weight: bolder;">Reverse a linked list recursively and iteratively</h2>
             <br>
             <p>A linked list can be reversed either iteratively or recursively. The recursive way of reversing a linked
                 list can be very tricky
@@ -82,7 +82,32 @@
                 <p>This process of moving p and q backwards and reversing the links continues till the whole stack is empty. 
                     And we obtain the linked list in a reversed fashion.
                 </p>
-            
+                <br>
+                <br>
+                <p>Following is the code to reverse a linked list iteratively.</p>
+                <br>
+                <div class="code">
+<pre>
+    node* rev_iteratively(node *p)
+    {
+        node *curptr=head;
+        node *prevptr=NULL;
+        node *nextptr;
+
+        while(curptr!=NULL)
+        {
+            nextptr=curptr->next;       //initialise nextptr
+            curptr->next=prevptr;       //reversing the link of current node to point to previous node
+
+            prevptr=curptr;             //moving forward with these two lines
+            curptr=nextptr;
+        }
+        head=prevptr;
+
+        return head;
+    }
+</pre>
+                </div>
         </div>
 
     </div>
