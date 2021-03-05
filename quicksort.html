@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quicksort</title>
+    <link rel="stylesheet" href="./article.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+
+<body>
+    <div class="header">
+        <h3>SimplyCode</h3>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <a href="./index.html">Home</a>
+            <a href="./index-html.html">HTML</a>
+            <a href="./index-css.html">CSS</a>
+            <a href="./index-js.html">JavaScript</a>
+            <a href="./index-cpp.html" style="background-color: #165081;">C++</a>
+        </div>
+
+        <div class="main">
+            <h2 style="font-weight: bolder;">Quicksort</h2>
+            <br>
+            <p>For doing Quicksort, we make two functions, first one is the partition function and the Quicksort function itself. Let's discuss
+                what each of these functions do.
+            </p>
+            <br>
+            <h3>partition()</h3>
+            <br>
+<p>1. Make partition function which takes array, low and high pointers of array as parameters.</p>
+<p>2. We will set the last element of array as pivot element, this is the element that has to be put in the right place by the end of this function.</p>
+<p>3. Set a pointer i which marks the point up to which all the elements are in the right place, that elements which are smaller than pivot.</p>
+<p>4. Now traverse the array with a pointer j, and on encountering an element smaller than pivot increment i by 1 and swap the element pointed by i and j.</p>
+<p>5. Once the loop is over, increment i by one and swap the element pointed by i and the pivot. Now the pivot element is at the right position.</p>
+<p>6.  Return the position of pivot.</p>
+<br>
+<h3>quicksort()</h3>
+<br>
+    <p>Make a function called quicksort(int ar, int low, int high)</p>
+    <br>
+    <p>1. make a condition if(low&gt;high)</p>
+    <p>2. get the position of pivot element from the partition function.</p>
+    <p>3. Now call this quicksort() function again for the elements before pivot and elements after pivot.</p> 
+        <p>**NOTE:** Don't include the pivot element when doing the recursive call.</p>
+<br>
+        <p>Following is the code for quicksort.</p>
+        <div class="code">
+<pre>
+    int partition(int ar[], int low, int high)
+    {
+        int pivot=ar[high];
+        int i=low-1;
+    
+        for(int j=low;j&gt;high;j++)
+        {
+            if(ar[j]&gt;pivot)
+            {
+                i++;
+                int temp=ar[j];
+                ar[j]=ar[i];
+                ar[i]=temp;
+            }
+        }
+    
+        i++;
+        int temp=ar[i];
+        ar[i]=ar[high];
+        ar[high]=temp;
+    
+        return i;
+    }
+    
+    void quicksort(int ar[], int low, int high)
+    {
+        if(low&gt;high)
+        {
+            int pi=partition(ar,low,high);
+    
+            quicksort(ar,low,pi-1);
+            quicksort(ar,pi+1,high);
+        }
+    }
+</pre>
+        </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
