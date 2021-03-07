@@ -1,0 +1,100 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mergesort</title>
+    <link rel="stylesheet" href="./article.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+
+<body>
+    <div class="header">
+        <h3>SimplyCode</h3>
+    </div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <a href="./index.html">Home</a>
+            <a href="./index-html.html">HTML</a>
+            <a href="./index-css.html">CSS</a>
+            <a href="./index-js.html">JavaScript</a>
+            <a href="./index-cpp.html" style="background-color: #165081;">C++</a>
+        </div>
+
+        <div class="main">
+            <h2 style="font-weight: bolder;">Mergesort</h2>
+            <br>
+            <p>Merge function:</p>
+            <p>1. Make the merge function to merge two sorted arrays which takes the array, low, high and mid pointer which are pointing to the corresponding indices.</p>
+            <p>2. Determine the sizes of two arrays and make two dummy arrays and insert all the elements of the original arrays into these two arrays.</p>
+            <p>3. Now traverse both the arrays and compare the elements and update the original array filling the elements in their right position.</p>
+            <p>4. If any of the dummy array still has elements left to be inserted in answer array then insert them into it. </p>
+            <br>
+            <p>Mergesort function:</p>
+            <p> 1. Make the function mergesort() which does the sorting. </p>
+            <p>2. Check for the condition if left pointer is smaller than right and if that holds true proceed as follows.</p>
+            <p>3. Find the mid element by (l+r)/2; </p>
+            <p>4. Now call mergesort function recursively for the left and right part of the array.</p>
+            <p>5. Call the merge function to merge the two sorted arrays.</p>
+            <br><br>
+            <p>Follwing is the code for mergesort in C++:</p>
+            <div class="code">
+<pre>
+void merge(int ar[], int l,int mid,int r)
+{
+    int n1=mid-l+1;
+    int n2=r-mid;
+
+    int a[n1], b[n2];
+    for(int i=0;i&lt;n1;i++)
+        a[i]=ar[l+i];
+    for(int i=0;i&lt;n2;i++)
+        b[i]=ar[mid+1+i];
+
+    int i(0),j(0),k(l);
+
+    while(i&lt;n1 && j&lt;n2)
+    {
+        if(a[i]&lt;b[j])
+        {
+            ar[k]=a[i];
+            i++;k++;
+        }
+        else
+        {
+            ar[k]=b[j];
+            k++;j++;
+        }
+    }
+
+    while(i&lt;n1)
+    {
+        ar[k]=a[i];
+        i++;k++;
+    }
+    while(j&lt;n2)
+    {
+        ar[k]=b[j];
+        j++;k++;
+    }
+}
+
+void mergesort(int ar[], int l, int r)
+{
+    if(l&lt;r)
+    {
+        int mid=(l+r)/2;
+        mergesort(ar,l,mid);
+        mergesort(ar,mid+1,r);
+        merge(ar, l, mid, r);
+    }
+}   
+</pre>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
